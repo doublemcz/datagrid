@@ -413,6 +413,11 @@ class DataGrid extends Control
 	protected $showSelectedRowsCount = true;
 
 	/**
+	 * @var bool
+	 */
+	protected $allowResponsiveTable = false;
+
+	/**
 	 * @var string|null
 	 */
 	private $customPaginatorTemplate = null;
@@ -573,6 +578,7 @@ class DataGrid extends Control
 
 		$template->hasGroupActions = $this->hasGroupActions();
 		$template->hasGroupActionOnRows = $hasGroupActionOnRows;
+		$template->allowResponsiveTable = $this->allowResponsiveTable;
 
 		/**
 		 * Walkaround for Latte (does not know $form in snippet in {form} etc)
@@ -3315,6 +3321,15 @@ class DataGrid extends Control
 		}
 
 		return $presenter;
+	}
+
+
+	/**
+	 * @param bool $allowResponsiveTable
+	 */
+	public function setAllowResponsiveTable(bool $allowResponsiveTable): void
+	{
+		$this->allowResponsiveTable = $allowResponsiveTable;
 	}
 
 }
